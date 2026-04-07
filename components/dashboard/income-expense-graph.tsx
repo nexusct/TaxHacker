@@ -5,7 +5,7 @@ import { DetailedTimeSeriesData } from "@/models/stats"
 import { addDays, endOfMonth, format, startOfMonth } from "date-fns"
 import { useRouter } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
-import { IncomeExpenceGraphTooltip } from "./income-expense-graph-tooltip"
+import { IncomeExpenseGraphTooltip } from "./income-expense-graph-tooltip"
 
 interface IncomeExpenseGraphProps {
   data: DetailedTimeSeriesData[]
@@ -180,7 +180,7 @@ export function IncomeExpenseGraph({ data, defaultCurrency }: IncomeExpenseGraph
       </div>
 
       {/* Tooltip */}
-      <IncomeExpenceGraphTooltip
+      <IncomeExpenseGraphTooltip
         data={tooltip.data}
         defaultCurrency={defaultCurrency}
         position={tooltip.position}

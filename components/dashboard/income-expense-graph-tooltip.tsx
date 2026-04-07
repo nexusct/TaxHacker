@@ -9,7 +9,7 @@ interface ChartTooltipProps {
   containerWidth?: number
 }
 
-export function IncomeExpenceGraphTooltip({ data, defaultCurrency, position, visible }: ChartTooltipProps) {
+export function IncomeExpenseGraphTooltip({ data, defaultCurrency, position, visible, containerWidth }: ChartTooltipProps) {
   if (!visible || !data) {
     return null
   }
@@ -18,7 +18,8 @@ export function IncomeExpenceGraphTooltip({ data, defaultCurrency, position, vis
   const expenseCategories = data.categories.filter((cat) => cat.expenses > 0)
 
   const tooltipWidth = 320 // estimated max width
-  const spaceToRight = window.innerWidth - position.x
+  const viewportWidth = containerWidth ?? (typeof window !== "undefined" ? window.innerWidth : 1024)
+  const spaceToRight = viewportWidth - position.x
   const showToRight = spaceToRight >= tooltipWidth + 20 // 20px margin
 
   const horizontalOffset = showToRight ? 15 : -15 // distance from cursor
